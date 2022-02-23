@@ -21,6 +21,7 @@ public class ProjectController {
         return "Hello!";
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/project")
     public List<Project> getAllProjects(){
         return projectService.getAllProjects();
