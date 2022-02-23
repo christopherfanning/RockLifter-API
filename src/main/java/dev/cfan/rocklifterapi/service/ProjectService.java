@@ -20,4 +20,19 @@ public class ProjectService {
     public List<Project> getAllProjects(){
         return projectRepository.findAll();
     }
+
+    public Project createProject(Project project) {
+        projectRepository.save(project);
+        return project;
+    }
+
+
+    public Project deleteProject(Long projectId) {
+        projectRepository.deleteById(projectId);
+        return projectRepository.getById(projectId);
+    }
+
+    public Project updateProject(Long projectId) {
+        return projectRepository.getById(projectId);
+    }
 }

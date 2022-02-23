@@ -1,9 +1,9 @@
 package dev.cfan.rocklifterapi.controller;
 
 import dev.cfan.rocklifterapi.model.Project;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import dev.cfan.rocklifterapi.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,35 @@ import java.util.List;
 @RequestMapping("/api")
 public class ProjectController {
 
+    @Autowired
+    ProjectService projectService;
+
+
     @GetMapping("/hello")
     public String getHello(){
         return "Hello!";
     }
 
-    @GetMapping("/project/")
+    @GetMapping("/project")
     public List<Project> getAllProjects(){
-//        List<Project> = new ArrayList<>();
-        return new ArrayList<Project>();
+        return projectService.getAllProjects();
 
     }
+
+    @PostMapping("/project")
+    public Project createProject(@RequestBody Project project){
+        return projectService.createProject(project);
+    }
+
+    @DeleteMapping("/project/{projectId}")
+    public Project deleteProject(@PathVariable(value = "projectId") Long projectId){
+        return projectService.deleteProject(projectId);
+
+    }
+
+    @PutMapping("/project/{projectId}")
+    public Project updateProject(@PathVariable(value = "projectId") Long projectId){
+        return projectService.updateProject(projectId);
+
+
 }
