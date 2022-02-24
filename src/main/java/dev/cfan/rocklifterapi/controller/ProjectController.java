@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200" )
+//@CrossOrigin(origins = "https://rocklifter.cfan.dev" )
 @RestController
 @RequestMapping("/api")
 public class ProjectController {
@@ -21,12 +23,12 @@ public class ProjectController {
         return "Hello!";
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/project")
     public List<Project> getAllProjects(){
         return projectService.getAllProjects();
 
     }
+
 
     @PostMapping("/project")
     public Project createProject(@RequestBody Project project){

@@ -58,18 +58,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // only allowed urls without JWT
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,
+                .antMatchers(
                         "/users",
                         "/users/*",
                         "/api/*",
                         "/api/categories",
                         "/api/categories/*/posts/*",
-                        "/api/project*").permitAll()
-//                .antMatchers("/**").permitAll()
+                        "/api/project",
+                        "/api/hello").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().csrf();
+                .and().csrf().disable();
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
