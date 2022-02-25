@@ -20,11 +20,13 @@ public class ProjectController {
 
     @GetMapping("/hello")
     public String getHello(){
+        System.out.println("We are hitting the hello world route.");
         return "Hello!";
     }
 
     @GetMapping("/project")
     public List<Project> getAllProjects(){
+        System.out.println("Get all projects hit.");
         return projectService.getAllProjects();
 
     }
@@ -32,17 +34,20 @@ public class ProjectController {
 
     @PostMapping("/project")
     public Project createProject(@RequestBody Project project){
+        System.out.println("Create project hit.");
         return projectService.createProject(project);
     }
 
     @DeleteMapping("/project/{projectId}")
     public Project deleteProject(@PathVariable(value = "projectId") Long projectId){
+        System.out.println("Delete project hit.");
         return projectService.deleteProject(projectId);
 
     }
 
     @PutMapping("/project/{projectId}")
     public Project updateProject(@PathVariable(value = "projectId") Long projectId) {
+        System.out.println("Update project hit");
         return projectService.updateProject(projectId);
     }
 
