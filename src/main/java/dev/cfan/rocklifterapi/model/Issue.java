@@ -20,9 +20,11 @@ public class Issue {
 
     private String title;
     private String description;
+    private String status;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;
+    
 }
