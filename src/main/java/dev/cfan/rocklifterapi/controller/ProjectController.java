@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200" )
-//@CrossOrigin(origins = "https://rocklifter.cfan.dev" )
+//@CrossOrigin(origins = "http://localhost:4200" )
+//@CrossOrigin(origins = "https://rocklifter.cfan.dev:80,," )
+@CrossOrigin(origins = "*", exposedHeaders="Access-Control-Allow-Origin")
 @RestController
 @RequestMapping("/api")
 public class ProjectController {

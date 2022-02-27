@@ -62,6 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // step2
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        http.cors().configurationSource(corsConfigurationSource());
         // only allowed urls without JWT
         http.authorizeRequests()
                 .antMatchers(
@@ -76,7 +78,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().csrf().disable();
+                .and().cors().configurationSource(corsConfigurationSource());
+//        .and().csrf().disable();
         http.cors().configurationSource(corsConfigurationSource());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
