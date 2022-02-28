@@ -17,10 +17,10 @@ public class JpaUserService implements UserDetailsService {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    public void setUserService(UserService userService){
-//        this.userService = userService;
-//    }
+    @Autowired
+    public void setUserService(UserService userService){
+        this.userService = userService;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
