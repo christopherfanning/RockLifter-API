@@ -35,4 +35,8 @@ public class IssueService {
     }
 
 
+    public List<Issue> getProjectIssues(Long projectId) {
+        Project project = projectRepository.getById(projectId);
+        return project.getIssueList();
+    }
 }

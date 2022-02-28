@@ -31,4 +31,8 @@ public class IssueController {
 
     }
 
+    @GetMapping("/project/{projectId}/issue")
+    public List<Issue> getProjectIssues(@PathVariable(value = "projectId") Long projectId){
+        return issueService.getProjectIssues(projectId);
+    }
 }
