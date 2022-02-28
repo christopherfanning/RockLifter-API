@@ -10,7 +10,9 @@ import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200" )
 //@CrossOrigin(origins = "https://rocklifter.cfan.dev:80,," )
-@CrossOrigin(origins = "*", exposedHeaders="Access-Control-Allow-Origin")
+//@CrossOrigin(origins = "*", exposedHeaders="Access-Control-Allow-Origin")
+//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://rocklifter.herokuapp.com" )
 @RestController
 @RequestMapping("/api")
 public class ProjectController {
