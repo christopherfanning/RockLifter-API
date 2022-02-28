@@ -52,5 +52,10 @@ public class ProjectController {
         return projectService.updateProject(projectId);
     }
 
+    @GetMapping("project/{projectId}")
+    public Project getSingleProject(@PathVariable(value = "projectId") Long projectId) throws Exception {
+        System.out.println("Getting a single project");
+        return projectService.getSingleProject(projectId);
+    }
 
 }
