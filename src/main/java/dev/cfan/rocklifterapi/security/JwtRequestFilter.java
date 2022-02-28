@@ -26,7 +26,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JWTUtils jwtUtils;
 
     //When any api will be called this method will be called first and this will extract
-    // Token from header pass to JWT Util calls for token details extraction  @Override
+    // Token from header pass to JWT Util calls for token details extraction
+    @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
                                     HttpServletResponse httpServletResponse, FilterChain filterChain)
             throws ServletException, IOException {

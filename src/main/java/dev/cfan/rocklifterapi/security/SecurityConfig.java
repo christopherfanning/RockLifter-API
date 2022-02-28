@@ -73,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().cors().configurationSource(corsConfigurationSource());
         .and().csrf().disable();
 //        http.cors().configurationSource(corsConfigurationSource());
-        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 //    @Bean
