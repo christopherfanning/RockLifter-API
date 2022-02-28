@@ -63,23 +63,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.cors().configurationSource(corsConfigurationSource());
+//        http.cors().configurationSource(corsConfigurationSource());
         // only allowed urls without JWT
         http.authorizeRequests()
-                .antMatchers(
-                        "/users",
-                        "/users/*",
-                        "/api/*",
-                        "/api/categories",
-                        "/api/categories/*/posts/*",
-                        "/api/project",
-                        "/api/hello").permitAll()
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().cors().configurationSource(corsConfigurationSource());
-//        .and().csrf().disable();
+//                .and().cors().configurationSource(corsConfigurationSource());
+        .and().csrf().disable();
         http.cors().configurationSource(corsConfigurationSource());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }

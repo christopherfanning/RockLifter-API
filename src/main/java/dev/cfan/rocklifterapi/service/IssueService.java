@@ -21,8 +21,10 @@ public class IssueService {
 
     public Issue createNewIssue(Long projectId, Issue issueObject) {
         Optional<Project> project = projectRepository.findById(projectId);
-        if(project.get() != null){
+        if(project.isPresent()){
             issueObject.setProject(project.get());
+            System.out.println("BAM, it's getting saved!");
+            return issueRepository.save(issueObject);
         }
 
         return issueRepository.save(issueObject);
