@@ -7,6 +7,7 @@ import dev.cfan.rocklifterapi.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,7 @@ public class IssueService {
         Optional<Project> project = projectRepository.findById(projectId);
         if(project.isPresent()){
             issueObject.setProject(project.get());
-            System.out.println("BAM, it's getting saved!");
+            System.out.println("Issue getting saved!");
             return issueRepository.save(issueObject);
         }
 
@@ -42,13 +43,23 @@ public class IssueService {
 
     public List<Issue> getClosedIssues(Long projectId) {
         Project project = projectRepository.getById(projectId);
-        List<Issue> closedList = project.getIssueList().stream().filter( p -> p.getStatus().equals("closed")).toList();
+        List<Issue> closedList = new ArrayList<>();
+        for (Issue p : project.getIssueList()) {
+            if (p.getStatus().equals("closed")) {
+                closedList.add(p);
+            }
+        }
         return closedList;
     }
 
     public List<Issue> getOpenIssues(Long projectId) {
         Project project = projectRepository.getById(projectId);
-        List<Issue> closedList = project.getIssueList().stream().filter( p -> p.getStatus().equals("open")).toList();
+        List<Issue> closedList = new ArrayList<>();
+        for (Issue p : project.getIssueList()) {
+            if (p.getStatus().equals("open")) {
+                closedList.add(p);
+            }
+        }
         return closedList;
     }
 }
