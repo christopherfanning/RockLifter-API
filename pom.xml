@@ -15,7 +15,7 @@
     <description>RockLifter-API</description>
     <properties>
 <!--        <java.version>11</java.version>-->
-        <java.runtime.version>16</java.runtime.version>
+        <java.runtime.version>17</java.runtime.version>
     </properties>
     <dependencies>
 <!--        <dependency>-->
