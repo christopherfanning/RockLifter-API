@@ -47,7 +47,7 @@ public class IssueController {
     }
 
     @GetMapping("/issue/{issueId}")
-    public Issue getSingeIssue(@PathVariable(value = "issueId") Long issueId){
+    public Issue getSingeIssue(@PathVariable(value = "issueId") Long issueId) throws Exception {
         return issueService.getSingeIssue(issueId);
     }
 }
