@@ -39,4 +39,16 @@ public class IssueService {
         Project project = projectRepository.getById(projectId);
         return project.getIssueList();
     }
+
+    public List<Issue> getClosedIssues(Long projectId) {
+        Project project = projectRepository.getById(projectId);
+        List<Issue> closedList = project.getIssueList().stream().filter( p -> p.getStatus().equals("closed")).toList();
+        return closedList;
+    }
+
+    public List<Issue> getOpenIssues(Long projectId) {
+        Project project = projectRepository.getById(projectId);
+        List<Issue> closedList = project.getIssueList().stream().filter( p -> p.getStatus().equals("open")).toList();
+        return closedList;
+    }
 }

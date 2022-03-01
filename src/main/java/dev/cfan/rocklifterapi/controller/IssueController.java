@@ -35,4 +35,14 @@ public class IssueController {
     public List<Issue> getProjectIssues(@PathVariable(value = "projectId") Long projectId){
         return issueService.getProjectIssues(projectId);
     }
+
+    @GetMapping("/project/{projectId}/issues/open")
+    public List<Issue> getOpenIssues(@PathVariable(value = "projectId") Long projectId){
+        return issueService.getOpenIssues(projectId);
+    }
+
+    @GetMapping("/project/{projectId}/issues/closed")
+    public List<Issue> getClosedIssues(@PathVariable(value = "projectId") Long projectId){
+        return issueService.getClosedIssues(projectId);
+    }
 }
