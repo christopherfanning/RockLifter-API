@@ -71,4 +71,21 @@ public class IssueService {
 
         return issue.get();
     }
+
+    public Issue updateSingeIssue(Long issueId, Issue issue) throws Exception {
+        Optional<Issue> oldIssue = issueRepository.findById(issueId);
+        if (oldIssue.isEmpty()) {
+            throw new Exception("Issue not found");
+        }
+
+        // update the contents of the old post with the new stuff.
+        oldIssue.get().setTitle(issue.getTitle());
+        oldIssue.get().setDescription(issue.getDescription());
+        oldIssue.get().setStatus(issue.getStatus());
+        oldIssue.get().setType(issue.getType());
+        return issueRepository.save(oldIssue.get());
+
+
+
+    }
 }

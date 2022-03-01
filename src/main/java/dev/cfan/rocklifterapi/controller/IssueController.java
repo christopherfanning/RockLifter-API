@@ -50,4 +50,10 @@ public class IssueController {
     public Issue getSingeIssue(@PathVariable(value = "issueId") Long issueId) throws Exception {
         return issueService.getSingeIssue(issueId);
     }
+
+    @PostMapping("/issue/{issueId}")
+    public Issue updateSingeIssue(@PathVariable(value = "issueId") Long issueId,
+                                  @RequestBody Issue issueObject) throws Exception {
+        return issueService.updateSingeIssue(issueId, issueObject);
+    }
 }
