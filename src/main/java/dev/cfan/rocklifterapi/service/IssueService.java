@@ -22,7 +22,7 @@ public class IssueService {
 
     public Issue createNewIssue(Long projectId, Issue issueObject) {
         Optional<Project> project = projectRepository.findById(projectId);
-        if(project.isPresent()){
+        if (project.isPresent()) {
             issueObject.setProject(project.get());
             System.out.println("Issue getting saved!");
             return issueRepository.save(issueObject);
@@ -61,5 +61,14 @@ public class IssueService {
             }
         }
         return closedList;
+    }
+
+    public Issue getSingeIssue(Long issueId) throws Exception {
+        Optional<Issue> issue = issueRepository.findById(issueId);
+        if (issue.isEmpty()) {
+            throw new Exception("Issue not found");
+        }
+
+        return issue.get();
     }
 }

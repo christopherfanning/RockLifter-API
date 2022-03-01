@@ -21,6 +21,7 @@ public class Issue {
     private String title;
     private String description;
     private String status;
+    private String type;
 
     @JsonIgnore
     @ManyToOne
