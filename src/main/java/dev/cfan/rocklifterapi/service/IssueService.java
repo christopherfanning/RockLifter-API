@@ -65,7 +65,7 @@ public class IssueService {
 
     public Issue getSingeIssue(Long issueId) throws Exception {
         Optional<Issue> issue = issueRepository.findById(issueId);
-        if (issue.isEmpty()) {
+        if (issue.get() == null) {
             throw new Exception("Issue not found");
         }
 
@@ -74,7 +74,7 @@ public class IssueService {
 
     public Issue updateSingeIssue(Long issueId, Issue issue) throws Exception {
         Optional<Issue> oldIssue = issueRepository.findById(issueId);
-        if (oldIssue.isEmpty()) {
+        if (oldIssue.get() == null) {
             throw new Exception("Issue not found");
         }
 
